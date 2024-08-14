@@ -1,0 +1,36 @@
+name: sum
+
+services:
+  summary:
+    image: summary
+    build:
+      args:
+        task: summarization
+        models: 
+        save: saveNone
+        arguments:
+    environment:
+      - "EXECUTE=${EXECUTE}"
+    command: python execute.py summarization 1 ds=0:0
+    tty: true
+    networks:
+      - monitoring_network
+    depends_on:
+      - tcpdump
+
+  tcpdump:
+    image: tcpdump
+    build:
+      dockerfile: ./Dockerfile-tcpdump     
+    command: tcpdump -i any -s 0 -U -l -n # -w /tcpdump/output.pcap
+    tty: true
+    networks:
+      - monitoring_network
+    volumes:
+      - ./tcpdump_output:/tcpdump
+    cap_add:
+      - NET_ADMIN
+
+networks:
+  monitoring_network:
+    driver: host

@@ -1,0 +1,9 @@
+# Create a docker image containing "tcpdump":
+    
+FROM ubuntu:latest
+
+RUN apt-get update
+RUN apt-get install tcpdump -y
+
+# CMD [ "tcpdump", "-i", "eth0" , "-w", "tcpdump/output.pcap" ]
+CMD [ "tcpdump", "-i", "eth0" ]

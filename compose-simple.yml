@@ -1,0 +1,30 @@
+name: sim
+
+services:
+  simple:
+    image: simple
+    build:
+      dockerfile: ./Dockerfile-simple
+    command: python simple.py model input
+    tty: true
+    networks:
+      - monitoring_network
+    depends_on:
+      - tcpdump
+
+  tcpdump:
+    image: tcpdump
+    build:
+      dockerfile: ./Dockerfile-tcpdump     
+    command: tcpdump -i any -s 0 -U -l # -w /tcpdump/output.pcap
+    tty: true
+    networks:
+      - monitoring_network
+    volumes:
+      - ./tcpdump_output:/tcpdump
+    cap_add:
+      - NET_ADMIN
+        
+networks:
+  monitoring_network:
+    driver: bridge

@@ -1,0 +1,1 @@
+docker compose -f compose-simple.yml up --abort-on-container-exit

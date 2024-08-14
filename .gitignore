@@ -1,0 +1,11 @@
+*venv/*
+__pycache__
+app/*
+cmp/*
+models/*
+model/*
+input/*
+tcpdump_output/*
+.DS_Store
+
+

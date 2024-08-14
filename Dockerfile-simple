@@ -1,0 +1,30 @@
+# Create a docker image using a model.
+FROM python:latest
+
+# Prevents Python from writing pyc files.
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Keeps Python from buffering stdout and stderr to avoid situations where
+# the application crashes without emitting any logs due to buffering.
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# Copy necessary files:
+COPY simple.py .
+COPY requirements-simple.txt .
+
+# Copy any model and input files stored in the context:
+COPY model/. model/.
+COPY input/. input/.
+
+
+# Download dependencies as a separate step to take advantage of Docker's caching.
+# Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
+# Leverage a bind mount to "requirements.txt" to avoid having to copy them into
+# into this layer.
+# RUN --mount=type=cache,target=/root/.cache/pip \
+#     --mount=type=bind,source=requirements-simple.txt,target=requirements-simple.txt \
+RUN python -m pip install -r requirements-simple.txt
+
+CMD [ "python", "simple.py", "model", "input"]

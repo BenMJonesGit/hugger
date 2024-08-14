@@ -1,0 +1,8 @@
+transformers
+torch
+sentencepiece
+protobuf
+accelerate
+ffmpeg
+datasets
+huggingface_hub[cli]

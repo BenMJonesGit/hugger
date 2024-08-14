@@ -1,0 +1,29 @@
+Federal regulators have for the first time banned a digital platform from serving users under 18, accusing the app — 
+known as NGL — of exaggerating its ability to use artificial intelligence to curb cyberbullying in a groundbreaking settlement.
+
+An app popular among children and teens, NGL aggressively marketed to young users despite risks of bullying on the anonymous messaging 
+site, the Federal Trade Commission and the Los Angeles District Attorney’s Office alleged in a complaint unveiled Tuesday.
+
+The complaint alleged that NGL tricked users into paying for subscriptions by sending them computer-generated messages 
+appearing to be from real people and offering a service for as much as $9.99 a week to find out their real identity. 
+People who signed up received only “hints” of those identities, whether they were real or not, enforcers said.
+
+After users complained about the “bait-and switch tactic,” executives at the company “laughed off” their concerns,
+referring to them as “suckers,” the FTC said in an announcement.
+
+NGL, internet shorthand for “not gonna lie,” agreed to pay $5 million and stop marketing to kids and teens to settle the lawsuit, which also alleged that the company violated children’s privacy laws by collecting data from youths under 13 without parental consent.
+
+The settlement marks a major milestone in the federal government’s efforts to tackle concerns that tech platforms are exposing children to noxious material and profiting from it. And it’s one of the most significant actions by the FTC under Chair Lina Khan, who has dialed up scrutiny of the tech sector at the agency since taking over in 2021.
+
+“We will keep cracking down on businesses that unlawfully exploit kids for profit,” Khan (D) said in a statement.
+
+NGL co-founder Joao Figueiredo said in a statement Tuesday that the company cooperated with the FTC’s investigation 
+for nearly two years and viewed the “resolution as an opportunity to make NGL better than ever.”
+
+“While we believe many of the allegations around the youth of our user base are factually incorrect, we anticipate 
+that the agreed upon age-gating and other procedures will now provide direction for others in our space, and hopefully 
+improve policies generally,” Figueiredo said.
+
+NGL’s popularity has exploded, with a user base topping 200 million. At one point it became the most downloaded product 
+on Apple’s app store only a year after its 2021 launch. The platform lets users anonymously respond to questions from 
+friends and social media contacts and markets itself as a place where people can play games such as “never have I ever.”

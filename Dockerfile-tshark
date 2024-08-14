@@ -1,0 +1,10 @@
+# Create a docker image containing "tcpdump":
+    
+FROM ubuntu:latest
+
+RUN apt update
+RUN apt install tshark -y
+
+COPY track.sh .
+RUN chmod 777 track.sh
+CMD [ "source", "track.sh" ]
