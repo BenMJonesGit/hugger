@@ -77,7 +77,10 @@ def execute(name):
         if type(name) is str and os.path.exists(name):
             file = open(name, mode)
             input = file.read()
-            print(f"\nINPUT: {name}: {input}\n")
+            if mode ==  "rt":
+                print(f"\nINPUT: {name}: {input}\n")
+            else:
+                print(f"\nINPUT: {name}\n")
             print(f"\nOUTPUT: {execModel(model, input)}\n")
         else:
             print(f"\nOUTPUT: {execModel(model, name)}\n")

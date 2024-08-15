@@ -52,7 +52,7 @@ def loadModel(model_name):
 # which might be a string or blob, returning the result of that process,
 # which is a printable string (or object).
 def execModel(model, input):
-    if type(input) is not str:
+    if type(input) is not str and type(input) is not bytes:
         input = input.copy()
     return model(input)['text']+'\n'
 

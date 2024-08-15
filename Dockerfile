@@ -14,11 +14,11 @@ ARG task=summarization
 # a string containing indexes in the "models" array to indicate
 # which ones to load into the docker image.  If this string is
 # empty all of the models named will be loaded.
-ARG models="0 2 6"
+ARG models="0 2"
 
 # This indicates which type of save we want to do (saveModels or
 # savePretrained):
-ARG save="savePretrained"
+ARG save="saveModels"
 
 # This string indicates what arguments are given to the hugger.py
 # module to select models and run test files:
@@ -61,10 +61,13 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 RUN python $save.py $task $models
 COPY models/. models/.
 
+# Remove cached huggingface models from docker image:
+RUN rm -rf /root/.cache/huggingface
+
 # Switch to the non-privileged user to run the application.
 # USER appuser
 
 # Run the application.
-ENV TASK="$task"
-ENV ARGUMENTS=$arguments
-CMD [ "sh", "-c", "python hugger.py ${TASK} $ARGUMENTS" ]
+ENV task="$task"
+ENV arguments=$arguments
+CMD [ "sh", "-c", "python hugger.py ${task} $arguments" ]

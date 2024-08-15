@@ -6,8 +6,8 @@ services:
     build:
       args:
         task: summarization
-        models: 
-        save: saveNone
+        models: 0 1
+        save: saveModels
         arguments:
     environment:
       - "EXECUTE=${EXECUTE}"
