@@ -1,8 +1,8 @@
 name: hug
 
 services:
-  summary:
-    image: summary
+  hugger:
+    image: hugger
     build:
       args:
         task: summarization
