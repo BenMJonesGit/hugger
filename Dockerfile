@@ -20,7 +20,7 @@ ARG models="0 2 6"
 # savePretrained):
 ARG save="savePretrained"
 
-# This string indicates what arguments are given to the execute.py
+# This string indicates what arguments are given to the hugger.py
 # module to select models and run test files:
 #    n - An index into the models array indicating which model to operate on.
 #    name - The name of an input file in the "inputs/taskname" folder.
@@ -67,4 +67,4 @@ COPY models/. models/.
 # Run the application.
 ENV TASK="$task"
 ENV ARGUMENTS=$arguments
-CMD [ "sh", "-c", "python execute.py ${TASK} $ARGUMENTS" ]
+CMD [ "sh", "-c", "python hugger.py ${TASK} $ARGUMENTS" ]

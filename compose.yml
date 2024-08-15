@@ -1,4 +1,4 @@
-name: sum
+name: hug
 
 services:
   summary:
@@ -11,7 +11,8 @@ services:
         arguments:
     environment:
       - "EXECUTE=${EXECUTE}"
-    command: python execute.py summarization 1 ds=0:0
+      - "TASK=${TASK}"
+    command: python hugger.py summarization 1 ds=0:0
     tty: true
     networks:
       - monitoring_network
@@ -33,4 +34,4 @@ services:
 
 networks:
   monitoring_network:
-    driver: host
+    driver: bridge

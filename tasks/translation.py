@@ -25,10 +25,10 @@ def loadModel(model_name):
 # which might be a string or blob, returning the result of that process,
 # which is a printable string.
 def execModel(model, input):
-    return model(input, max_length=400, min_length=30, do_sample=False, src_lang='en', tgt_lang='fr')
+    return model(input, max_length=400, min_length=30, do_sample=False, src_lang='en', tgt_lang='fr')[0]['translation_text']
 
 # This is an array containing the names of models for this "task".
-# The execute.py module will index into this array to select a model.
+# The hugger.py module will index into this array to select a model.
 models = [
     "Helsinki-NLP/opus-mt-en-fr",
     "Helsinki-NLP/opus-mt-tc-big-en-fr",
@@ -46,13 +46,11 @@ datasets = [
     {
         "name":"EdinburghNLP/xsum",
         "split": "test", 
-        "input": "document", 
-        "output": "summary"
+        "input": "document"
     },
     {
         "name":"roneneldan/TinyStories", 
         "split": "validation",
-        "input": "text",
-        "output": "text"
+        "input": "text"
     }
 ]

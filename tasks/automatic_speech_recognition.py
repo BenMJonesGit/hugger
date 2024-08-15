@@ -57,7 +57,7 @@ def execModel(model, input):
     return model(input)['text']+'\n'
 
 # This is an array containing the names of models for this "task".
-# The execute.py module will index into this array to select a model.
+# The hugger.py module will index into this array to select a model.
 models = [
     "openai/whisper-large-v2",
     "openai/whisper-large-v3",
@@ -77,7 +77,6 @@ datasets = [
         "name": "MLCommons/peoples_speech",
         "split": "test", 
         "input": "audio",
-        "output": "text",
         "take": 100
     }
 ]

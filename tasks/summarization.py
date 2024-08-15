@@ -28,7 +28,7 @@ def execModel(model, input):
     return model(input, max_length=200, min_length=30, do_sample=False)[0]['summary_text']+'\n'
 
 # This is an array containing the names of models for this "task".
-# The execute.py module will index into this array to select a model.
+# The hugger.py module will index into this array to select a model.
 models = [
     "facebook/bart-large-cnn",
     "sshleifer/distilbart-xsum-12-1",
@@ -62,19 +62,16 @@ models = [
 #   name - The name of the database on Hugging Face.
 #   split - The name of the split to be used.
 #   input - The name of the subset of this dataset to be used for input.
-#   output - The name of the subset of this dataset which is the human answer.
 #   take - Number of dataset elements to download (all if not specified or 0).
 datasets = [
     {
         "name":"EdinburghNLP/xsum",
         "split": "test", 
-        "input": "document", 
-        "output": "summary"
+        "input": "document"
     },
     {
         "name":"roneneldan/TinyStories", 
         "split": "validation",
-        "input": "text",
-        "output": "text"
+        "input": "text"
     }
 ]

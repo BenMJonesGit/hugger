@@ -3,7 +3,8 @@ This project is used for trying out models in HuggingFace.
 In the "tasks" folder, there are modules named for different tasks in HuggingFace.
 The names of these modules are all lower case with '-' replaced by '_'.
 
-In the tasks folder are modules defining the following variables and functions:
+In the tasks folder are modules defining the following variables and functions
+(see template.py):
 
     task
         Name of the task, which is a grouping within HuggingFace.
@@ -34,14 +35,13 @@ In the tasks folder are modules defining the following variables and functions:
             name - The name of the dataset on HuggingFace.
             split - The name of the split to be used when loading the dataset.
             input - The name of the subset of this dataset to be used for input.
-                If it contains names separated by commas, create a josn strin from
+                If it contains names separated by commas, create a jason string from
                 those fields.
-            output - The name of the subset of this dataset which is the human answer.
             take - The number of dataset elements to download (all if not specified or 0).
 
 The model is run as follows:
 
-    python execute.py taskName m1 input11 input12 ... m2 ... repeat n
+    python hugger.py taskName m1 input11 input12 ... m2 ... repeat n
 
         Select a model according to "taskName".  The module to be loaded is from "tasks/taskName.py".
 
@@ -74,7 +74,10 @@ The model is run as follows:
 
         If the EXECUTE environment variable is defined as a string with space-
         separated values, it overrides whatever parameters were given after
-        the taskname.
+        the taskName.
+
+        If the TASK environment variable is defined as a taskName, it overrides
+        the taskName parameter.
 
 A docker container may be built as follows:
 
@@ -92,7 +95,7 @@ A docker container may be run as follows:
 
     docker run -it dockerName --name myName
         This automatically runs:
-            python execute.py taskname arguments
+            python hugger.py taskname arguments
 
         If --name myName is not specified, a name will be assigned to the
         container.  This name may be discovered by running 'docker ps'.
@@ -131,9 +134,10 @@ The only problem with this is it doesn't exit gracefully when the summary servic
 finishes therefore, say the following:
     source compose.sh
         This will apply the --abort-on-container-exit to the compose.
-    EXECUTE="parameters" source compose.sh
-        This will set the EXECUTE environment variable to pass parameters
-        to the execute.py module.
+    EXECUTE="parameters" TASK=taskName source compose.sh
+        This will set the EXECUTE environment variable and the TASK environment
+        variable to override the parameters to the hugger.py module given
+        in the compose.yml file.
 
 Finally, we have the following to do a single model that has already been loaded
 into a folder:

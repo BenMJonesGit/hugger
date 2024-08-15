@@ -28,7 +28,7 @@ def execModel(model, input):
     return model(q)['answer']
 
 # This is an array containing the names of models for this "task".
-# The execute.py module will index into this array to select a model.
+# The hugger.py module will index into this array to select a model.
 models = [
     "deepset/roberta-base-squad2",
     "distilbert/distilbert-base-cased-distilled-squad",
@@ -49,7 +49,6 @@ datasets = [
         "name": "rajpurkar/squad_v2",
         "split": "validation", 
         "input": "question,context", 
-        "output": "answers"
     }
 ]
 

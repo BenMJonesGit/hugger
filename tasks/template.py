@@ -20,7 +20,7 @@ def execModel(model, input):
     return {}
 
 # This is an array containing the names of models for this "task".
-# The execute.py module will index into this array to select a model.
+# The hugger.py module will index into this array to select a model.
 models = [ 
     "folder0/subfolder0",
     "folder1/subfolder1",
@@ -34,14 +34,13 @@ models = [
 #   input - The name of the subset of this dataset to be used for input.
 #       If it contains names separated by commas, create a json string
 #       from those fields.
-#   output - The name of the subset of this dataset which is the human answer.
-#   take - Number of dataset elements to download (all if not specified).
+#   take - Number of dataset elements to download (all if not specified or 0).
 datasets = [
     {
         "name": "",
         "split": "", 
-        "input": "", 
-        "output": ""
+        "input": "",
+        "take": 0
     }
 ]
 

@@ -1,4 +1,4 @@
-# python execute.py taskName m1 name11 name21 m2 name21 name22 ... repeat n
+# python hugger.py taskName m1 name11 name21 m2 name21 name22 ... repeat n
 #
 #   Select a model according to "taskName".  The module to be loaded is from "tasks/taskName.py".
 #
@@ -11,6 +11,8 @@
 #   At the end of the parameter list "repeat" indicates that the parameter list after "taskName"
 #   should be repeated.  If a number is given after "repeat", the parameter list should be repeated
 #   that many times after the initial run.  If no number is given after "repeat", repeat indefintely.
+#
+#   If TASK environment variable is defined use it instead of the taskName argument.
 #
 #   If EXECUTE environment variable is defined, split it with space to get the arguments to use
 #   rather than the ones specified after taskName
@@ -100,7 +102,6 @@ def setDataset(n):
         n = 0
     dataset_split = datasets[n]['split']
     dataset_input = datasets[n]['input']
-    dataset_output = datasets[n]['output']
     print(f"\nDATASET[{n}]: {datasets[n]['name']}\n")
     
     if 'take' in datasets[n].keys() and datasets[n]['take'] != 0:
@@ -112,11 +113,16 @@ if __name__ == "__main__":
      
     # First argument is the module to process:
     argc = len(sys.argv)
-    if argc < 2 or not os.path.exists(f"tasks/{sys.argv[1]}.py"):
-        print(f"Specify the name of a module from 'tasks' folder instead of: {sys.argv[1]}")
+    if argc >= 2:
+        module = sys.argv[1]
+    else:
+        module = "summarization"
+    module = os.getenv("TASK", default=module)
+    if not os.path.exists(f"tasks/{module}.py"):
+        print(f"Specify the name of a module from 'tasks' folder instead of: {module}")
         exit(0)
 
-    m = __import__(f"tasks.{sys.argv[1]}", fromlist=["task", "models", "ext", "mode", "loadModel", "execModel", "datasets"])
+    m = __import__(f"tasks.{module}", fromlist=["task", "models", "ext", "mode", "loadModel", "execModel", "datasets"])
     task = m.task
     models = m.models
     ext = m.ext
@@ -124,8 +130,6 @@ if __name__ == "__main__":
     loadModel = m.loadModel
     execModel = m.execModel
     datasets = m.datasets
-
-    module = sys.argv[1]
 
     arguments = os.getenv("EXECUTE", default="")
     if arguments != "":
